@@ -1,0 +1,57 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.0.3, pluggy-1.6.0 -- /home/ec2-user/cognimoss-bot-prod/agent_runner/agent/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /var/lib/agent-runner/work/jsumagang_repotest/issue-6-f5e9730d
+plugins: typeguard-4.5.2, anyio-4.13.0
+collecting ... collected 36 items
+
+tests/test_api_client.py::TestRiftcodexClient::test_init_default_url PASSED [  2%]
+tests/test_api_client.py::TestRiftcodexClient::test_init_custom_url PASSED [  5%]
+tests/test_api_client.py::TestRiftcodexClient::test_search_cards PASSED  [  8%]
+tests/test_api_client.py::TestRiftcodexClient::test_search_cards_with_filters PASSED [ 11%]
+tests/test_api_client.py::TestRiftcodexClient::test_get_card PASSED      [ 13%]
+tests/test_api_client.py::TestRiftcodexClient::test_get_card_image PASSED [ 16%]
+tests/test_api_client.py::TestRiftcodexClient::test_context_manager PASSED [ 19%]
+tests/test_searcher.py::TestCardSearcher::test_init_with_client PASSED   [ 22%]
+tests/test_searcher.py::TestCardSearcher::test_init_without_client PASSED [ 25%]
+tests/test_searcher.py::TestCardSearcher::test_search PASSED             [ 27%]
+tests/test_searcher.py::TestCardSearcher::test_search_with_filters PASSED [ 30%]
+tests/test_searcher.py::TestCardSearcher::test_search_by_name PASSED     [ 33%]
+tests/test_searcher.py::TestCardSearcher::test_search_by_type PASSED     [ 36%]
+tests/test_searcher.py::TestCardSearcher::test_search_by_rarity PASSED   [ 38%]
+tests/test_searcher.py::TestCardSearcher::test_context_manager PASSED    [ 41%]
+tests/test_viewer.py::TestCardViewer::test_init_with_client PASSED       [ 44%]
+tests/test_viewer.py::TestCardViewer::test_init_without_client PASSED    [ 47%]
+tests/test_viewer.py::TestCardViewer::test_get_card_details PASSED       [ 50%]
+tests/test_viewer.py::TestCardViewer::test_format_card_text_basic PASSED [ 52%]
+tests/test_viewer.py::TestCardViewer::test_format_card_text_with_description PASSED [ 55%]
+tests/test_viewer.py::TestCardViewer::test_format_card_text_with_stats PASSED [ 58%]
+tests/test_viewer.py::TestCardViewer::test_format_card_text_with_abilities PASSED [ 61%]
+tests/test_viewer.py::TestCardViewer::test_format_card_detailed_basic PASSED [ 63%]
+tests/test_viewer.py::TestCardViewer::test_format_card_detailed_with_all_fields FAILED [ 66%]
+tests/test_viewer.py::TestCardViewer::test_format_card_list_empty PASSED [ 69%]
+tests/test_viewer.py::TestCardViewer::test_format_card_list_multiple PASSED [ 72%]
+tests/test_viewer.py::TestCardViewer::test_format_card_list_detailed_empty PASSED [ 75%]
+tests/test_viewer.py::TestCardViewer::test_format_card_list_detailed_multiple PASSED [ 77%]
+tests/test_viewer.py::TestCardViewer::test_format_card_list_detailed_truncation FAILED [ 80%]
+tests/test_viewer.py::TestCardViewer::test_display_card PASSED           [ 83%]
+tests/test_viewer.py::TestCardViewer::test_display_card_detailed PASSED  [ 86%]
+tests/test_viewer.py::TestCardViewer::test_display_card_by_id PASSED     [ 88%]
+tests/test_viewer.py::TestCardViewer::test_display_card_by_id_detailed PASSED [ 91%]
+tests/test_viewer.py::TestCardViewer::test_display_card_list PASSED      [ 94%]
+tests/test_viewer.py::TestCardViewer::test_display_card_list_detailed PASSED [ 97%]
+tests/test_viewer.py::TestCardViewer::test_context_manager PASSED        [100%]
+
+=================================== FAILURES ===================================
+___________ TestCardViewer.test_format_card_detailed_with_all_fields ___________
+tests/test_viewer.py:168: in test_format_card_detailed_with_all_fields
+    assert "attack" in formatted
+E   AssertionError: assert 'attack' in '==================================================\n  Ancient Dragon\n  ID: card-002\n==================================================\nPROPERTIES:\n  Type:     Unit\n  Rarity:   legendary\n  Cost:     8\n  Set:      Core Set\n  Mana:     RRGG\n\nDESCRIPTION:\n  A mighty dragon from ancient times.\n\nSTATS:\n  Attack       8\n  Defense      6\n  Health       10\n\nABILITIES:\n  • Flying\n  • Haste\n  • Regenerate\n\nKEYWORDS:\n  Dragon, Legendary\n\nPRICING:\n  Price:    $25.5\n  Market:   $24.99\n=================================================='
+___________ TestCardViewer.test_format_card_list_detailed_truncation ___________
+tests/test_viewer.py:257: in test_format_card_list_detailed_truncation
+    assert "1." in formatted
+E   AssertionError: assert '1.' in '----------------------------------------------------------------------\n#    Name                      Type         Rarity     Cost  \n----------------------------------------------------------------------\n1    AAAAAAAAAAAAAAAAAAAAAAAA  BBBBBBBBBBB  CCCCCCCCC  999   \n----------------------------------------------------------------------'
+=========================== short test summary info ============================
+FAILED tests/test_viewer.py::TestCardViewer::test_format_card_detailed_with_all_fields
+FAILED tests/test_viewer.py::TestCardViewer::test_format_card_list_detailed_truncation
+========================= 2 failed, 34 passed in 0.24s =========================
